@@ -8,7 +8,7 @@ import SymbolSearch from "../components/SymbolSearch";
 import CandlestickChart from "../components/CandlestickChart";
 import { getSymbols } from "../api/api";
 
-export default function Dashboard({ token }) {
+export default function Dashboard({ token, setToken }) {
   const [symbol, setSymbol] = useState("");
   const [initialLoad, setInitialLoad] = useState(true);
 
@@ -33,8 +33,9 @@ export default function Dashboard({ token }) {
   }, []);
 
   const logout = () => {
-    localStorage.removeItem("token");
-    window.location.reload();
+    localStorage.removeItem("access");
+    localStorage.removeItem("refresh");
+    setToken(null);
   };
 
   return (

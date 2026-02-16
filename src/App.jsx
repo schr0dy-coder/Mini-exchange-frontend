@@ -9,7 +9,7 @@ function App() {
     return <Login setToken={setToken} />;
   }
 
-  return <Dashboard token={token} />;
+  return <Dashboard token={token} setToken={setToken} />;
 }
 
 export default App;
