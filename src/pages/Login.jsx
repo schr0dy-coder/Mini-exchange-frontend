@@ -29,17 +29,17 @@ export default function Login({ setToken }) {
         return;
       }
       try {
-        await registerUser(username, password);
+        await   User(username, password);
         setSuccess("Account created. Signing you in…");
         const data = await loginUser(username, password);
         if (data.access) {
-          localStorage.setItem("token", data.access);
+          // Store tokens under `access`/`refresh` keys used by the API helper
+          localStorage.setItem("access", data.access);
+          localStorage.setItem("refresh", data.refresh);
           setToken(data.access);
         } else {
           setError("Account created. Please sign in.");
         }
-        localStorage.setItem("access", data.access);
-        localStorage.setItem("refresh", data.refresh);
       } catch (err) {
         setError(err.message || "Registration failed. Please try again.");
       } finally {
@@ -51,13 +51,12 @@ export default function Login({ setToken }) {
     try {
       const data = await loginUser(username, password);
       if (data.access) {
-        localStorage.setItem("token", data.access);
+        localStorage.setItem("access", data.access);
+        localStorage.setItem("refresh", data.refresh);
         setToken(data.access);
       } else {
         setError(data.detail || "Invalid credentials.");
       }
-      localStorage.setItem("access", data.access);
-      localStorage.setItem("refresh", data.refresh);
     } catch (err) {
       setError(err.message || "Login failed. Please try again.");
     } finally {
