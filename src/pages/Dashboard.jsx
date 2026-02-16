@@ -58,7 +58,7 @@ export default function Dashboard({ token, setToken }) {
 
               <button
                 onClick={logout}
-                className="text-sm font-medium px-3 py-1.5 rounded-md bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 transition-all duration-150 active:scale-95 border border-red-500/20 hover:border-red-500/40"
+                className="text-xs font-medium px-2 py-1 rounded-md bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 transition-all duration-150 active:scale-95 border border-red-500/20 hover:border-red-500/40"
               >
                 Log out
               </button>
