@@ -15,7 +15,7 @@ export default function OpenOrders({ token, symbol }) {
   const load = async () => {
     try {
       setError(null);
-      const data = await getMyOrders(token, { status: "OPEN,PARTIAL" });
+      const data = await getMyOrders({ status: "OPEN,PARTIAL" });
       const list = Array.isArray(data) ? data : data?.results ?? data?.orders ?? [];
       setOrders(list);
     } catch (err) {
@@ -34,7 +34,7 @@ export default function OpenOrders({ token, symbol }) {
   const handleCancel = async (orderId) => {
     setCancellingId(orderId);
     try {
-      await cancelOrder(token, orderId);
+      await cancelOrder(orderId);
       setOrders((prev) => prev.filter((o) => o.id !== orderId));
     } catch (err) {
       setError(err.message || "Cancel failed");
