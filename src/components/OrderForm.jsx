@@ -23,7 +23,7 @@ export default function OrderForm({ token, symbol }) {
     setLoading(true);
 
     try {
-      await placeOrder(token, { symbol, side, price: p, quantity: q });
+      await placeOrder({ symbol, side, price: p, quantity: q });
       setMessage({ type: "success", text: "Order placed." });
       setPrice("");
       setQuantity("");
