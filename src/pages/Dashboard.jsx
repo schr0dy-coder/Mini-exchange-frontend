@@ -58,20 +58,19 @@ export default function Dashboard({ token, setToken }) {
               <button
                 onClick={logout}
                 className="
-    flex items-center gap-2
     text-sm font-medium
     px-3 py-1.5
-    rounded-lg
-    bg-transparent
-    border border-transparent
+    rounded-md
+    bg-[var(--color-surface-elevated)]
+    border border-[var(--color-border)]
     text-[var(--color-text-muted)]
-    hover:text-white
-    hover:bg-white/5
+    hover:text-[var(--color-text)]
+    hover:border-[var(--color-border-focus)]
     transition-all duration-200
     active:scale-95
   "
               >
-                <span>Log out</span>
+                Log out
               </button>
             </div>
           </div>
