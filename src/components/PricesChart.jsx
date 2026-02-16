@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { WS_ORIGIN } from "../api/api";
 import {
   BarChart,
   Bar,
@@ -31,7 +32,9 @@ export default function PricesChart() {
     setError(null);
 
     try {
-      ws = new WebSocket("ws://127.0.0.1:8000/ws/prices/");
+      // Use WS_ORIGIN so frontend connects to the same host as the API
+      const origin = WS_ORIGIN || (window.location.protocol === 'https:' ? 'wss:' : 'ws:') + '//' + window.location.host;
+      ws = new WebSocket(`${origin}/ws/prices/`);
 
       ws.onopen = () => {
         if (!cancelled) setLoading(false);
