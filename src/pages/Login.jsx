@@ -29,7 +29,7 @@ export default function Login({ setToken }) {
         return;
       }
       try {
-        await   User(username, password);
+        await registerUser(username, password);
         setSuccess("Account created. Signing you in…");
         const data = await loginUser(username, password);
         if (data.access) {
