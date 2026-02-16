@@ -158,7 +158,8 @@
 // }
 
 const API_BASE =
-  import.meta.env.VITE_API_BASE ||
+  import.meta.env.VITE_API_BASE || 
+  "https://mini-exchange-backend.onrender.com/api" ||
   "http://127.0.0.1:8000/api";
 
 export const WS_ORIGIN = (() => {
