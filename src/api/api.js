@@ -276,18 +276,3 @@ async function refreshAccessToken() {
   localStorage.setItem("access", data.access);
   return data.access;
 }
-
-/** Decode JWT (access token) and return username from token payload */
-export function getCurrentUser() {
-  const access = localStorage.getItem("access");
-  if (!access) return null;
-
-  try {
-    const payload = access.split(".")[1];
-    const decoded = JSON.parse(atob(payload));
-    return decoded.username || decoded.sub || null;
-  } catch (err) {
-    console.error("Failed to decode token:", err);
-    return null;
-  }
-}
