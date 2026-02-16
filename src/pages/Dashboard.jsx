@@ -40,7 +40,6 @@ export default function Dashboard({ token, setToken }) {
 
   return (
     <div className="min-h-screen bg-[var(--color-bg)] flex flex-col">
-      
       {/* ================= HEADER ================= */}
       <header className="border-b border-[var(--color-border)] bg-[var(--color-surface)] sticky top-0 z-20 backdrop-blur">
         <div className="max-w-7xl mx-auto px-6">
@@ -58,9 +57,21 @@ export default function Dashboard({ token, setToken }) {
 
               <button
                 onClick={logout}
-                className="text-xs font-medium px-2 py-1 rounded-md bg-red-500/10 text-red-400 hover:bg-red-500/20 hover:text-red-300 transition-all duration-150 active:scale-95 border border-red-500/20 hover:border-red-500/40"
+                className="
+    flex items-center gap-2
+    text-sm font-medium
+    px-3 py-1.5
+    rounded-lg
+    bg-transparent
+    border border-transparent
+    text-[var(--color-text-muted)]
+    hover:text-white
+    hover:bg-white/5
+    transition-all duration-200
+    active:scale-95
+  "
               >
-                Log out
+                <span>Log out</span>
               </button>
             </div>
           </div>
@@ -69,7 +80,6 @@ export default function Dashboard({ token, setToken }) {
 
       {/* ================= MAIN ================= */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-6 py-6">
-
         {/* Empty State */}
         {!symbol && !initialLoad && (
           <div className="text-center py-16 text-[var(--color-text-muted)]">
@@ -85,16 +95,13 @@ export default function Dashboard({ token, setToken }) {
 
         {symbol && (
           <div className="grid grid-cols-1 xl:grid-cols-4 gap-6">
-
             {/* ========== LEFT 3/4 AREA ========== */}
             <div className="xl:col-span-3 space-y-6">
-
               {/* Candle Chart */}
               <CandlestickChart symbol={symbol} />
 
               {/* Order Book + Order Form */}
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-
                 {/* Order Book */}
                 <div className="lg:col-span-2">
                   <OrderBook symbol={symbol} />
@@ -104,7 +111,6 @@ export default function Dashboard({ token, setToken }) {
                 <div>
                   <OrderForm token={token} symbol={symbol} />
                 </div>
-
               </div>
 
               {/* Open Orders + Trade History */}
@@ -112,14 +118,12 @@ export default function Dashboard({ token, setToken }) {
                 <OpenOrders token={token} symbol={symbol} />
                 <TradeHistory token={token} symbol={symbol} />
               </div>
-
             </div>
 
             {/* ========== RIGHT SIDEBAR ========== */}
             <div className="space-y-6">
               <PortfolioHoldings token={token} />
             </div>
-
           </div>
         )}
       </main>
