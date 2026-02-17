@@ -4,7 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import { BackendStatusProvider } from "./context/BackendStatusContext";
 import BackendRebootMessage from "./components/BackendRebootMessage";
 
-function App() {
+function AppContent() {
   const [token, setToken] = useState(localStorage.getItem("access"));
 
   if (!token) {
