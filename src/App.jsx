@@ -1,8 +1,10 @@
 import { useState } from "react";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
+import { BackendStatusProvider } from "./context/BackendStatusContext";
+import BackendRebootMessage from "./components/BackendRebootMessage";
 
-function App() {
+function AppContent() {
   const [token, setToken] = useState(localStorage.getItem("access"));
 
   if (!token) {
@@ -10,6 +12,15 @@ function App() {
   }
 
   return <Dashboard token={token} setToken={setToken} />;
+}
+
+function App() {
+  return (
+    <BackendStatusProvider>
+      <BackendRebootMessage />
+      <AppContent />
+    </BackendStatusProvider>
+  );
 }
 
 export default App;
